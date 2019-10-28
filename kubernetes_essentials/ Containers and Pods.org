@@ -13,8 +13,8 @@ Here are the commands used in this lesson:
 
 cat << EOF | kubectl create -f -
 apiVersion: v1
-kind: Pod
-metadata:
+kind: Pod 
+metadata:    
   name: nginx
 spec:
   containers:   
