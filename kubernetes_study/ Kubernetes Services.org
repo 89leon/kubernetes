@@ -1,0 +1,47 @@
+# Kubernetes Services
+Services are another important component of deploting apps with Kubernetes.
+
+Services allow you to dynamically access a group of replica pods.
+Replica pods are often being created and destroyed , so what happend to other
+pods or external entities which need to access thos pods?
+
+A Service create an 'abstraction layer' on top of a set of replica pods. 
+You can access the service rather that accessing the pods directly , so as pdos componentand go , you get ununterrupted ,
+dynamic access to whatever replicas are up at the time.
+
+| Cluster       |
+| Server -> pod |
+|        -> pod |
+|        -> pod |
+
+##########################################################
+1.Create a NodePort service on top of your nginx pods:
+##########################################################
+cat << EOF | kubectl create -f -
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30080
+  type: NodePort
+EOF
+
+
+##########################################################
+2.Get a list of services in the cluster.
+##########################################################
+kubectl get svc
+
+
+
+You should see your service called nginx-service.
+Since this is a NodePort service, you should be able to access it using port 30080 on any of your cluster's servers. You can test this with the command:
+curl localhost:30080
+You should get an HTML response from nginx!
