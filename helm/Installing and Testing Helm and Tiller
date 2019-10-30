@@ -1,0 +1,83 @@
+Installing and Testing Helm and Tiller
+Introduction
+Welcome aboard. We're going to walk through the installation and testing of Helm and Tiller. When we look at the Linux Academy lab credentials page, we'll see usernames, passwords, and IP addresses (public and private) for a Kube Master and two Kube Nodes.
+
+Let's get logged into the Kube Master:
+
+ssh cloud_user@<IP ADDRESS>
+Once we answer yes at the authenticity warning prompt, and we're in.
+
+The Lay of the Land
+Let's see what we're dealing with, as far as Kubernetes goes:
+
+kubectl get nodes
+That will show that we have three nodes running, and one of them is a master.
+
+Install Helm and Tiller in the Existing Cluster
+Download the helm binary release:
+
+curl https://storage.googleapis.com/kubernetes-helm/helm-v2.12.3-linux-amd64.tar.gz > ./helm.tar.gz
+If we run a quick ls, we'll see that new helm.tar.gz sitting in our directory. Extract the archive:
+
+tar -xvf ./helm.tar.gz
+Now we can navigate to the linux-amd64 directory:
+
+cd linux-amd64
+If we run another ls, we'll see two executable files, helm and tiller. Let's move them to the /usr/local/bin directory:
+
+sudo mv ./helm /usr/local/bin
+sudo mv ./tiller /usr/local/bin
+To ensure that the helm command is available, let's get back into our home directory and run the helm version command:
+
+cd ~
+helm version
+We get a version, meaning Helm is good to go, but we get an error that Helm couldn't find Tiller. So we can install it with this:
+
+helm init
+Run the version command again to ensure that Tiller is available:
+
+helm version
+Now we can see that there's a Tiller server.
+
+Deploy the Example nginx Chart
+Ensure that you are in the cloud_user home directory. An ls should show a directory named nginx that contains the chart we need:
+
+cd ~
+ls
+ls nginx
+This last command should return a directory listing containing Chart.yaml. Install the nginx chart with this:
+
+helm install ./nginx
+This command should error with a "name" error, due to the tiller service account missing.
+
+Correct Errors
+Our problem is that missing service account, so let's create one:
+
+kubectl create serviceaccount --namespace kube-system tiller
+Now we'll create a Tiller cluster rule:
+
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+Let's patch the Tiller deployment:
+
+kubectl patch deploy --namespace kube-system tiller-deploy -p'{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+If we wait for the tiller pod to restart with the update, we can try installing the nginx example chart again:
+
+helm install ./nginx
+Verify That the Container is Running
+Once the release has completed and we see the release output, let's locate the cluster IP for the service that has been created. We're going to need that to confirm that the nginx pod has been deployed correctly:
+
+curl <CONTAINER IP>:8888
+This should return an HTML message:
+
+<h1>Hello</h1> <p>This is a test</p>
+Finishing Up
+Our Helm release was just a test, so we need to clean it up so that developers can get in here to work on a something fresh. We do that by getting the release name from Helm, and then deleting that release:
+
+helm ls --short
+helm delete <RELEASE NAME>
+To confirm that the release has been removed, we can run these commands, which should return nothing:
+
+helm ls  
+kubectl get pods
+Conclusion
+Well, we've installed Helm from our binary, corrected an issue with the service account, and now we can actually deploy Helm releases. We're good to go. Congratulations!
