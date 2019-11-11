@@ -1,0 +1,28 @@
+Hey, in this lesson, we will briefly discuss the history of DevOps. In order to understand DevOps, you need to know a little bit about the Agile software development movement, 
+because DevOps grew out of Agile software development. Agile software development is a way of doing software development that focuses on small, frequent cycles.
+In order to deliver functionality to customers quickly and quickly respond to changing business goals. The traditional way of doing software development was called waterfall,
+and it focused on long planning phases, doing several months worth of software development work and then a long testing and release cycle. 
+Agile, on the other hand, focuses on doing work in small pieces, releasing very, very frequently, sometimes every two weeks, sometimes every week, 
+sometimes multiple times a week, with a focus on getting small pieces of functionality in front of the customer as quickly as possible.
+Agile software development is called agile because it is more agile. It allows a software development team to change direction very, 
+very frequently and respond to changing customer needs almost immediately, DevOps and Agile often go hand in hand. It can be difficult to do Agile without DevOps,
+and it can be difficult to do DevOps without Agile. Let's talk about the events that led to the creation of the DevOps cultural movement. In 2007. 
+Agile software development was becoming more and more popular,
+but was suffering from a lot of friction between developers and operations as developers were trying to release code more and more frequently while operations people were
+trying to maintain the stability of their systems. In 2007, Patrick Debois was an engineer who had experience in the industry, doing both development and operations work.
+He was working on quality assurance testing on a particular project and became frustrated with all of the problems caused by the divide between dev and ops. As a tester,
+he was constantly going back and forth between them, and saw that there were many issues getting in the way of releasing software quickly while maintaining stability.  
+In 2008, Patrick Debois met Andrew Shafer at the Agile 2008 conference in Toronto,
+Canada, and they began to start conversations about this divide between development in operations and how to close the gap. They began to look for other people
+who were interested in bridging that divide and began to start online discussion groups to talk about this problem. On June 23rd, 2009, there was a famous talk
+given by John Allspaw and Paul Hammond at the Velocity Conference called 10 Plus Deploys Per Day Dev and Ops Cooperation at Flicker.
+They were doing an extremely large number of deployments every day, and they had pioneered some ways to do that through cooperation between development and operations.
+Now Patrick Dubois was watching this talk via live stream, and it started a huge discussion on Twitter. On October 30th through the 31st, 2009, 
+Patrick hosted an event called DevOps Days in Ghent, Belgium. This was a small conference for both developers and operations engineers, 
+and it spawned a continued conversation on Twitter with the hashtag Dev0ps. From there, DevOps grew into an organic grassroots movement all 
+over the world and has continued to gain in popularity. This collaboration between developers and operations people has led to the creation of many different 
+tools that support the practices valued by DevOps. Since 2009, the DevOps movement has not stopped growing. What began as a small niche movement among just a
+few people has now become completely mainstream. DevOps has spawned a large variety of tools and an entire industry. And it has completely changed the face of
+the IT industry forever. DevOps has almost become a de facto standard. The companies that are growing the most, the companies that are the most successful today 
+in the IT industry are companies that are doing and pioneering DevOps. Now you understand a brief history of DevOps and hopefully that will give you a little insight
+ into the DevOps cultural movement. The next section of this course will go on to discuss DevOps culture in more detail and what it looks like. 
