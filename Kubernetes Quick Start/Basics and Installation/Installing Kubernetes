@@ -1,3 +1,5 @@
+Kubernetes Diagram : https://interactive.linuxacademy.com/diagrams/KubernetesQuickStart.html
+
 This lesson covers how to install Kubernetes on a CentOS 7 server in our Cloud Playground. Below, you will find a list of the commands used in this lesson.
 
 *Note in this lesson we are using 3 unit servers as this meets the minimum requirements for the Kubernetes installation. Use of a smaller size server (less than 2 cpus) will result in errors during installation.
