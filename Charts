@@ -1,8 +1,0 @@
-File structure of a chart
-- charts
-- Chart.yaml               = containes information about the chart
-- README.md                = optional human readble file
-- requirments.lock         
-- requirments.yaml         = optional file that lists dependencies for the chart
-- templates                = contains templates that combine with values to generate Kubernetes manifest files 
-- values.yaml              = contains the default configuration values for the chart 
